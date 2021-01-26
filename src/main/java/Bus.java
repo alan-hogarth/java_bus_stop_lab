@@ -25,4 +25,9 @@ public class Bus {
     public void removePassenger(Passenger passenger) {
         passengers.remove(0);
     }
+
+    public void pickUpFromBusStop(BusStop busStop) {
+        Passenger removedPassenger = busStop.removePerson();
+        passengers.add(removedPassenger);
+    }
 }

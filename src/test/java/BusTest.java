@@ -8,12 +8,15 @@ public class BusTest {
     private Bus bus;
     private Passenger passenger;
     private Passenger passenger2;
+    private BusStop busStop;
 
     @Before
     public void before(){
         bus = new Bus("home", 5);
         passenger = new Passenger();
         passenger2 = new Passenger();
+        busStop = new BusStop("Tower Hamlets");
+        busStop.addPerson(passenger);
     }
 
     @Test
@@ -33,10 +36,12 @@ public class BusTest {
         bus.removePassenger(passenger);
         assertEquals(0, bus.passengerCount());
     }
-//
-//    Create a method to add a passenger onto the bus only if the passenger
-//    count is less than the capacity.
-//    Create a method to remove a passenger from the bus.
+
+    @Test
+    public void canPickUpPersonFromBusStop(){
+        bus.pickUpFromBusStop(busStop);
+        assertEquals(1, bus.passengerCount());
+    }
 
 
 }
